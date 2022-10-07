@@ -1,7 +1,7 @@
 
 const maximizeUI = (e) => {
     //e.target.classList.toggle('maximized');
-    e.target.closest(".box").classList.toggle('maximized');
+    e.target.closest(".window-ui").classList.toggle('maximized');
 }
 
 const button = document.querySelectorAll('.titlebar__maximizeButton');
@@ -11,7 +11,7 @@ for (let index = 0; index < button.length; index++) {
     button[index].addEventListener("click", maximizeUI, false);
 }
 
-const box = document.querySelectorAll('.box');
+//const windowUi = document.querySelectorAll('.window-ui');
 
 
 

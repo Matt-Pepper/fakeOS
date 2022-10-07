@@ -9,9 +9,9 @@
     <script src="https://kit.fontawesome.com/2322775333.js" crossorigin="anonymous"></script>
     <script src="./js/index.js" defer></script>
 </head>
-<body id="startButton">
+<body>
     <div class="ui-layout">
-        <div class="box">
+        <div class="window-ui" style="left: 150px; top: 150px;">
             <div class="titlebar" id="titlebar">
                 <span class="titlebar__title">window</span>
                 <button class="titlebar__minimizeButton titlebar__button"><i class="fa-solid fa-window-minimize"></i></button>
@@ -19,16 +19,20 @@
                 <button class="titlebar__closeButton titlebar__button"><i class="fa-solid fa-xmark"></i></button>
 
             </div>
-            text
+            <div class="window-ui__content">
+                text
+            </div>
         </div>
-        <div class="box" style="right: 0;">
+        <div class="window-ui" style="right: 150px; bottom: 150px;">
             <div class="titlebar" id="titlebar">
                 <span class="titlebar__title">window2</span>
                 <button class="titlebar__minimizeButton titlebar__button"><i class="fa-solid fa-window-minimize"></i></button>
                 <button class="titlebar__maximizeButton titlebar__button"><i class="fa-regular fa-window-restore"></i></button>
                 <button class="titlebar__closeButton titlebar__button"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            text
+            <div class="window-ui__content">
+                text
+            </div>
         </div>
     </div>
     
