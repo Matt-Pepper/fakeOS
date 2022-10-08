@@ -12,21 +12,34 @@ body {
   background-color: #008080;
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
-  font-family: "w95fa";
+  font-family: "w95fa", sans-serif;
+}
+
+button {
+  background-color: #c3c3c3;
+}
+button:hover {
+  background-color: red;
+}
+
+.desktop {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
 }
 
 .ui-layout {
-  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: -1;
+  flex-grow: 1;
 }
 
 .window-ui {
   background-color: #c3c3c3;
   position: absolute;
+  min-width: 100px;
   width: 400px;
   height: 400px;
   font-size: 20px;
@@ -35,61 +48,97 @@ body {
 }
 
 .taskbar {
-  position: absolute;
-  bottom: 0;
   width: 100%;
   background-color: #c3c3c3;
   border-top: 3px solid white;
+  height: 50px;
+  display: flex;
+}
+.taskbar__clock {
+  border-style: solid;
+  border-width: 2px;
+  border-top-color: #828282;
+  border-left-color: #828282;
+  border-bottom-color: #ffffff;
+  border-right-color: #ffffff;
+  margin: 5px;
+  padding: 0px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 75px;
+}
+.taskbar__button-group {
+  flex-grow: 1;
 }
 .taskbar__button {
   display: flex;
   align-items: center;
   font-size: 18px;
   font-weight: 700;
-  background-color: #c3c3c3;
   padding: 1px 6px 1px 6px;
   margin: 5px;
 }
 
 .maximized {
   width: 100%;
-  height: 91%;
+  height: 100%;
   top: 0;
   left: 0;
-  bottom: -53px;
+  right: 0;
+  bottom: 0;
   right: 0;
   z-index: 9999;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .titlebar {
   display: flex;
   justify-content: space-between;
-  height: fit-content;
+  height: min-content;
+  align-items: center;
   background-color: #000082;
-  padding: 5px;
-  gap: 5px;
+  padding: 2px;
   margin: 1px;
+}
+.titlebar__button-group {
+  display: flex;
+  height: 100%;
+}
+.titlebar__button-group :nth-child(3) {
+  margin-left: 3px;
 }
 .titlebar__title {
   flex-grow: 1;
   text-align: left;
   padding: 5px;
   color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12pt;
+  font-weight: 500;
+  text-rendering: optimizeLegibility;
 }
 .titlebar__button {
-  min-width: 30px;
-  min-height: 30px;
-  width: 20px;
-  padding: 5px;
-  background-color: #c3c3c3;
+  box-sizing: content-box;
+  width: 13px;
+  height: 11px;
+  min-width: 13px;
+  min-height: 11px;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.titlebar__maximizeButton i {
-  font-size: 15px;
+.titlebar__button i {
+  font-size: 100%;
 }
 
-.window-ui, .taskbar__button, .titlebar__button {
+button, .window-ui {
   border-style: solid;
-  border-width: 3px;
+  border-width: 2px;
   border-top-color: #ffffff;
   border-left-color: #ffffff;
   border-bottom-color: #000000;
