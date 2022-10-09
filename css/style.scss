@@ -46,6 +46,8 @@ button {
 	height: 400px;
 	font-size: 20px;
 	text-align: center;
+    top: 100px;
+    left: 100px;
 	//transition: all 30ms ease-in;
 	@extend %border-effect;
     //transition: width 0.3s, height 0.3s, top 0.3s, right 0.3s, left 0.3s, bottom 0.3s;
