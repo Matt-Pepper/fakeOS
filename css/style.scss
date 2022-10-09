@@ -27,28 +27,32 @@ button {
 	display: flex;
 	height: 100vh;
 	flex-direction: column;
+
+    &__page {
+        flex-grow: 1;
+    }
 }
 
 .ui-layout {
-	//position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	flex-grow: 1;
+	
 }
 
 .window-ui {
-	background-color: #c3c3c3;
+    background-color: #c3c3c3;
 	position: absolute;
-	min-width: 100px;
+	min-width: 125px;
+    min-height: 120px;
 	width: 400px;
 	height: 400px;
 	font-size: 20px;
 	text-align: center;
-	transition: all 30ms ease-in;
+	//transition: all 30ms ease-in;
 	@extend %border-effect;
+    //transition: width 0.3s, height 0.3s, top 0.3s, right 0.3s, left 0.3s, bottom 0.3s;
 	//flex-grow: 1;
+    //resize: both;
+    //overflow: scroll;
+    //box-sizing: border-box;
 }
 
 .taskbar {
@@ -59,6 +63,8 @@ button {
 	border-top: 3px solid white;
 	height: 50px;
 	display: flex;
+    z-index: 999;
+    user-select: none;
 
 	&__clock {
 		border-style: solid;
@@ -93,15 +99,17 @@ button {
 
 .maximized {
 	width: 100%;
-	height: 100%;
+	height: calc(100% - 53px);
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	right: 0;
-	z-index: 9999;
+	z-index: 998;
 	box-sizing: border-box;
-	position: relative;
+	position: absolute;
+    order: -1;
+    //resize: none;
+    //overflow: hidden;
 }
 
 .titlebar {
@@ -112,6 +120,8 @@ button {
 	background-color: #000082;
 	padding: 2px;
 	margin: 1px;
+    cursor: move;
+    box-sizing: border-box;
 
 	&__button-group {
 		display: flex;
@@ -132,7 +142,8 @@ button {
 		text-overflow: ellipsis;
 		font-size: 12pt;
         font-weight: 500;
-        text-rendering:optimizeLegibility ;
+        text-rendering: optimizeLegibility;
+        user-select: none;
 	}
 
 	&__button {
@@ -149,6 +160,47 @@ button {
 			font-size: 100%;
 		}
 	}
+}
+
+.desktop-icon {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    margin: 10px 4px 3px;
+    padding-top: 15px;
+    gap: 4px;
+    z-index: 0;
+
+    &__text {
+        //text-align: left;
+        font-size: 12pt;
+        background-color: #008080;
+        color: white;
+        width: 80px;
+        padding: 3px;
+        max-height: 150px;
+        word-wrap: break-word;
+        box-sizing: border-box;
+        border: 1px dotted #008080;
+        user-select: none;
+
+    }
+    &__img {
+        width: 32px;
+
+        &--clicked {
+            filter: invert(30%) sepia(52%) saturate(1931%) hue-rotate(201deg) brightness(60%) contrast(94%);
+        }
+    }
+    
+    &--clicked {
+        border: 1px dotted yellow;
+        background-color: rgb(0, 0, 128);
+
+    }
+
 }
 
 %border-effect {

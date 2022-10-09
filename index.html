@@ -10,35 +10,34 @@
     <script src="./js/index.js" defer></script>
 </head>
 <body>
-    <div class="desktop">
-        <div class="ui-layout">
-            <div class="window-ui" style="right: 800px; bottom: 150px;">
-                <div class="titlebar" id="titlebar">
-                    <span class="titlebar__title">Window</span>
-                    <div class="titlebar__button-group">
-                        <button class="titlebar__minimizeButton titlebar__button"><i class="fa-solid fa-window-minimize"></i></button>
-                        <button class="titlebar__maximizeButton titlebar__button"><i class="fa-regular fa-window-restore"></i></button>
-                        <button class="titlebar__closeButton titlebar__button"><i class="fa-solid fa-xmark"></i></button>
-                    </div>
+    <template id="windowUi">
+        <div class="window-ui">
+            <div class="titlebar">
+                <span class="titlebar__title">Window</span>
+                <div class="titlebar__button-group">
+                    <button class="titlebar__minimizeButton titlebar__button"><i class="fa-solid fa-window-minimize"></i></button>
+                    <button class="titlebar__maximizeButton titlebar__button"><i class="fa-solid fa-window-maximize"></i></button>
+                    <button class="titlebar__closeButton titlebar__button"><i class="fa-solid fa-xmark"></i></button>
+                </div>
     
-                </div>
-                <div class="window-ui__content">
-                    text
+            </div>
+            <div class="window-ui__content">
+               
+            </div>
+        </div>
+    </template>
+    <div class="desktop" >
+
+        <div class="desktop__page" id="desktop">
+            <div class="desktop__icons">
+                <div class="desktop-icon" tabindex="0">
+                    <img class="desktop-icon__img" src="./static/icons/txt.png">
+                    <span class="desktop-icon__text">My Notepad.txt</span>
                 </div>
             </div>
-            <div class="window-ui" style="right: 150px; bottom: 150px;">
-                <div class="titlebar" id="titlebar">
-                    <span class="titlebar__title">Window2</span>
-                    <div class="titlebar__button-group">
-                        <button class="titlebar__minimizeButton titlebar__button"><i class="fa-solid fa-window-minimize"></i></button>
-                        <button class="titlebar__maximizeButton titlebar__button"><i class="fa-regular fa-window-restore"></i></button>
-                        <button class="titlebar__closeButton titlebar__button"><i class="fa-solid fa-xmark"></i></button>
-                    </div>
-                </div>
-                <div class="window-ui__content">
-                    text
-                </div>
+            <div class="ui-layout">
             </div>
+
         </div>
         
         <footer class="taskbar">
