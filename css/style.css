@@ -13,6 +13,7 @@ body {
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
   font-family: "w95fa", sans-serif;
+  overflow: hidden;
 }
 
 button {
@@ -32,6 +33,7 @@ button:hover {
 }
 .desktop__icons {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .window-ui {
@@ -45,16 +47,41 @@ button:hover {
   text-align: center;
   top: 100px;
   left: 100px;
+  z-index: 998;
+}
+.window-ui--inactive {
+  z-index: 990;
 }
 
 .taskbar {
   width: 100%;
+  max-width: 100vw;
   background-color: #c3c3c3;
   border-top: 3px solid white;
   height: 50px;
   display: flex;
-  z-index: 999;
+  z-index: 1000;
   user-select: none;
+  justify-content: space-between;
+}
+.taskbar__start {
+  min-width: 90px;
+  box-sizing: content-box;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 1px 6px 1px 6px;
+  margin: 5px;
+  flex-shrink: 1;
+}
+.taskbar__start img {
+  padding-right: 2px;
+}
+.taskbar__start div {
+  font-weight: 700;
+  font-size: 18px;
+  vertical-align: middle;
 }
 .taskbar__clock {
   border-style: solid;
@@ -72,14 +99,31 @@ button:hover {
 }
 .taskbar__button-group {
   flex-grow: 1;
+  width: 0;
+  display: flex;
 }
 .taskbar__button {
+  box-sizing: content-box;
   display: flex;
   align-items: center;
-  font-size: 18px;
-  font-weight: 700;
+  flex-direction: row;
+  justify-content: space-around;
   padding: 1px 6px 1px 6px;
   margin: 5px;
+  flex-shrink: 1;
+  min-width: 0px;
+}
+.taskbar__button div {
+  font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 12px;
+  vertical-align: middle;
+}
+.taskbar__button img {
+  width: 20px;
+  padding-right: 2px;
 }
 
 .maximized {
@@ -106,6 +150,9 @@ button:hover {
   cursor: move;
   box-sizing: border-box;
 }
+.titlebar--inactive {
+  background-color: #808080;
+}
 .titlebar__button-group {
   display: flex;
   height: 100%;
@@ -125,6 +172,9 @@ button:hover {
   font-weight: 500;
   text-rendering: optimizeLegibility;
   user-select: none;
+}
+.titlebar__title--inactive {
+  color: #c3c3c3;
 }
 .titlebar__button {
   box-sizing: content-box;

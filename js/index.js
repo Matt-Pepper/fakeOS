@@ -1,10 +1,15 @@
-const windowUi = document.querySelectorAll(".window-ui");
-const desktop = document.querySelector("#desktop");
 const windowTemplate = document.getElementById("windowUi");
 const iconTemplate = document.getElementById("iconTemplate");
+const taskbtnTemplate = document.getElementById("taskButton");
+const taskbar = document.getElementById("taskbarBtns");
+const windowUi = document.querySelectorAll(".window-ui");
+const desktop = document.querySelector("#desktop");
 const iconContainer = document.getElementById("iconContainer");
 
 // {name: "", icon: "", app: ""}
+/**
+ * create a new app by supplying an icon and creating an app function
+ */
 const appType = [
 	{ icon: "./static/icons/txt.png", app: "notepad" },
 	{ icon: "./static/icons/folder.png", app: "documents" },
@@ -12,14 +17,15 @@ const appType = [
 ];
 
 const iconList = [
-	{ app: appType[0], fileName: "Notepad", content: [] },
-	{ app: appType[1], fileName: "My Documents", content: [] },
-	{ app: appType[2], fileName: "Quiz Game", content: [] },
+	{ id: 0, app: appType[0], fileName: "Notepad", content: [] },
+	{ id: 1, app: appType[1], fileName: "My Documents", content: [] },
+	{ id: 2, app: appType[2], fileName: "Quiz Game", content: [] },
 ];
 
 const iconFactory = (app, fileName, content) => {
-	iconList.push({ app: app, fileName: fileName, content: content });
+	iconList.push({ id: iconList.length, app: appType[app], fileName: fileName, content: content });
 };
+//iconFactory(1, "a", []);
 
 /**
  * creates all events for each title for every window
@@ -59,8 +65,6 @@ const closeWindow = (e) => {
  * @param {*} icon
  */
 const createIconClickHandler = (icon) => {
-	console.log(icon);
-	//icon[i].childNodes
 	for (let i = 0; i < icon.length; i++) {
 		if (icon[i].hasChildNodes()) {
 			icon[i].querySelector("img").addEventListener("click", addIconColor);
@@ -98,17 +102,25 @@ const removeIconColor = (e) => {
  */
 const createWindow = (e) => {
 	const windowClone = windowTemplate.content.firstElementChild.cloneNode(true);
-	windowClone.querySelector(".titlebar__title").textContent = "Hello";
+	windowClone.querySelector(".titlebar__title").textContent = iconList[e.target.attributes.getNamedItem("data-icon-id").value].fileName;
 	desktop.appendChild(windowClone);
-
+    console.log(windowClone);
+    createTaskbarBtn(e);
 	createTitleBarEvents();
 };
 
+const createTaskbarBtn = (e) => {
+//const taskbtnTemplate = document.getElementById("taskButton");
+//const taskbar = document.getElementById("taskbarBtns");
+    const taskbarBtnClone = taskbtnTemplate.content.firstElementChild.cloneNode(true);
+    taskbarBtnClone.querySelector("img").setAttribute("src", iconList[e.target.attributes.getNamedItem("data-icon-id").value].app.icon);
+    taskbarBtnClone.querySelector("div").textContent = iconList[e.target.attributes.getNamedItem("data-icon-id").value].fileName;
+    taskbar.appendChild(taskbarBtnClone);
+    console.log(taskbarBtnClone);
+}
+
 const createIcons = (iconList) => {
 	iconList.forEach((element) => {
-		//windowClone.querySelector(".titlebar__title").textContent = "Hello";
-		//desktop.appendChild(windowClone);
-
 		const iconClone = iconTemplate.content.firstElementChild.cloneNode(true);
 		fillIcon(iconClone, element);
 		iconContainer.appendChild(iconClone);
@@ -118,29 +130,9 @@ const createIcons = (iconList) => {
 };
 
 const fillIcon = (icon, el) => {
-    console.log(icon);
 	icon.querySelector(".desktop-icon__img").setAttribute("src", el.app.icon);
 	icon.querySelector(".desktop-icon__text").textContent = el.fileName;
+	icon.querySelector(".desktop-icon__img").setAttribute("data-icon-id", el.id);
+	icon.querySelector(".desktop-icon__text").setAttribute("data-icon-id", el.id);
 };
 createIcons(iconList);
-
-/**
- * Gets current time and displays it in the clock element
- */
-const getCurrentTime = () => {
-	const currentTime = Date.now();
-	const time = [];
-	time.push(new Date(currentTime).getHours());
-	time.push(new Date(currentTime).getMinutes());
-
-	time.push(time[0] <= 12 ? "AM" : "PM");
-	if (time[0] > 12) time[0] -= 12;
-	if (time[0] == 0) time[0] = 12;
-	if (time[1] < 10) time[1] = `0${time[1]}`;
-
-	const timeString = `${time[0]}:${time[1]} ${time[2]}`;
-
-	document.querySelector("#clockTime").textContent = timeString;
-};
-getCurrentTime();
-setInterval(getCurrentTime, 6000);

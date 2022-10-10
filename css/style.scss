@@ -12,7 +12,8 @@ body {
 	background-color: #008080;
 	background-size: 100vw 100vh;
 	background-repeat: no-repeat;
-	font-family: "w95fa", sans-serif ;
+	font-family: "w95fa", sans-serif;
+	overflow: hidden;
 }
 
 button {
@@ -28,49 +29,76 @@ button {
 	height: 100vh;
 	flex-direction: column;
 
-    &__page {
-        flex-grow: 1;
-    }
+	&__page {
+		flex-grow: 1;
+	}
 
 	&__icons {
 		display: flex;
+		flex-wrap: wrap;
 	}
 }
 
 .ui-layout {
-	
 }
 
 .window-ui {
-    background-color: #c3c3c3;
+	background-color: #c3c3c3;
 	position: absolute;
 	min-width: 125px;
-    min-height: 120px;
+	min-height: 120px;
 	width: 400px;
 	height: 400px;
 	font-size: 20px;
 	text-align: center;
-    top: 100px;
-    left: 100px;
-	//transition: all 30ms ease-in;
+	top: 100px;
+	left: 100px;
 	@extend %border-effect;
-    //transition: width 0.3s, height 0.3s, top 0.3s, right 0.3s, left 0.3s, bottom 0.3s;
+	z-index: 998;
 	//flex-grow: 1;
-    //resize: both;
-    //overflow: scroll;
-    //box-sizing: border-box;
+	//resize: both;
+	//overflow: scroll;
+	//box-sizing: border-box;
+
+	&--inactive {
+		z-index: 990;
+	}
 }
 
 .taskbar {
 	//position: absolute;
 	//bottom: 0;
 	width: 100%;
+	max-width: 100vw;
 	background-color: #c3c3c3;
 	border-top: 3px solid white;
 	height: 50px;
 	display: flex;
-    z-index: 999;
-    user-select: none;
+	z-index: 1000;
+	user-select: none;
+	justify-content: space-between;
+
+	&__start {
+		min-width: 90px;
+		box-sizing: content-box;
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		justify-content: space-around;
+		padding: 1px 6px 1px 6px;
+		margin: 5px;
+		flex-shrink: 1;
+
+		& img {
+			padding-right: 2px;
+		}
+		
+		& div {
+			font-weight: 700;
+			font-size: 18px;
+			vertical-align: middle;
+		}
+	}
 
 	&__clock {
 		border-style: solid;
@@ -81,25 +109,46 @@ button {
 		border-bottom-color: #ffffff;
 		border-right-color: #ffffff;
 		margin: 5px;
-        padding: 0px 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 75px;
+		padding: 0px 5px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 75px;
 	}
 
 	&__button-group {
 		flex-grow: 1;
-	}
+		width: 0;
+		display: flex;
 
+	}
+	
 	&__button {
+		box-sizing: content-box;
 		display: flex;
 		align-items: center;
-		font-size: 18px;
-		font-weight: 700;
-
+		flex-direction: row;
+		justify-content: space-around;
 		padding: 1px 6px 1px 6px;
 		margin: 5px;
+		flex-shrink: 1;
+		min-width: 0px;
+		
+
+		& div {
+			font-weight: 500;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+		font-size: 12px;
+		vertical-align: middle;
+		}
+
+		& img {
+			width: 20px;
+			padding-right: 2px;
+		}
+
 	}
 }
 
@@ -113,9 +162,9 @@ button {
 	z-index: 998;
 	box-sizing: border-box;
 	position: absolute;
-    order: -1;
-    //resize: none;
-    //overflow: hidden;
+	order: -1;
+	//resize: none;
+	//overflow: hidden;
 }
 
 .titlebar {
@@ -126,8 +175,12 @@ button {
 	background-color: #000082;
 	padding: 2px;
 	margin: 1px;
-    cursor: move;
-    box-sizing: border-box;
+	cursor: move;
+	box-sizing: border-box;
+
+	&--inactive {
+		background-color: #808080;
+	}
 
 	&__button-group {
 		display: flex;
@@ -147,9 +200,13 @@ button {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		font-size: 12pt;
-        font-weight: 500;
-        text-rendering: optimizeLegibility;
-        user-select: none;
+		font-weight: 500;
+		text-rendering: optimizeLegibility;
+		user-select: none;
+
+		&--inactive {
+			color: #c3c3c3;
+		}
 	}
 
 	&__button {
@@ -169,44 +226,42 @@ button {
 }
 
 .desktop-icon {
-    //position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80px;
-    margin: 10px 4px 3px;
-    gap: 4px;
-    z-index: 0;
+	//position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 80px;
+	margin: 10px 4px 3px;
+	gap: 4px;
+	z-index: 0;
 
-    &__text {
-        //text-align: left;
-        font-size: 12pt;
-        background-color: #008080;
-        color: white;
-        width: 80px;
-        padding: 3px;
-        max-height: 150px;
-        word-wrap: break-word;
-        box-sizing: border-box;
-        border: 1px dotted #008080;
-        user-select: none;
-
-    }
-    &__img {
-        width: 32px;
+	&__text {
+		//text-align: left;
+		font-size: 12pt;
+		background-color: #008080;
+		color: white;
+		width: 80px;
+		padding: 3px;
+		max-height: 150px;
+		word-wrap: break-word;
+		box-sizing: border-box;
+		border: 1px dotted #008080;
+		user-select: none;
+	}
+	&__img {
+		width: 32px;
 		padding: 15px 24px 0px;
 
-        &--clicked {
-            filter: invert(30%) sepia(52%) saturate(1931%) hue-rotate(201deg) brightness(60%) contrast(94%);
-        }
-    }
-    
-    &--clicked {
-        border: 1px dotted yellow;
-        background-color: rgb(0, 0, 128);
+		&--clicked {
+			filter: invert(30%) sepia(52%) saturate(1931%) hue-rotate(201deg) brightness(60%)
+				contrast(94%);
+		}
+	}
 
-    }
-
+	&--clicked {
+		border: 1px dotted yellow;
+		background-color: rgb(0, 0, 128);
+	}
 }
 
 %border-effect {

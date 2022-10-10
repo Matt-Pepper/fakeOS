@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/2322775333.js" crossorigin="anonymous"></script>
     <script src="./js/index.js" defer></script>
+    <script src="./js/clock.js" defer></script>
 </head>
 <body>
     <template id="windowUi">
@@ -28,10 +29,14 @@
     </template>
     <template id="iconTemplate">
         <div class="desktop-icon" >
-            <img class="desktop-icon__img" src="" tabindex="0">
-            <span class="desktop-icon__text" tabindex="0"></span>
+            <img class="desktop-icon__img" src="" tabindex="0" data-icon-id="">
+            <span class="desktop-icon__text" tabindex="0" data-icon-id=""></span>
         </div>
     </template>
+    <template id="taskButton">
+        <button class="taskbar__button"><img src=""><div></div></button>
+    </template>
+
     <div class="desktop" >
 
         <div class="desktop__page" id="desktop">
@@ -43,8 +48,9 @@
         </div>
         
         <footer class="taskbar">
-            <div class="taskbar__button-group">
-                <button class="taskbar__button"><img src="./static/icons/start.png"> Start</button>
+            <div class="taskbar__button-group" id="taskbarBtns">
+                <button class="taskbar__start"><img src="./static/icons/start.png"><div> Start</div></button>
+                
 
             </div>
             <div class="taskbar__clock"><span id="clockTime"></span> </div>
