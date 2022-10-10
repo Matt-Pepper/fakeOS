@@ -13,7 +13,7 @@
     <template id="windowUi">
         <div class="window-ui">
             <div class="titlebar">
-                <span class="titlebar__title">Window</span>
+                <span class="titlebar__title"></span>
                 <div class="titlebar__button-group">
                     <button class="titlebar__minimizeButton titlebar__button"><i class="fa-solid fa-window-minimize"></i></button>
                     <button class="titlebar__maximizeButton titlebar__button"><i class="fa-solid fa-window-maximize"></i></button>
@@ -26,14 +26,16 @@
             </div>
         </div>
     </template>
+    <template id="iconTemplate">
+        <div class="desktop-icon" >
+            <img class="desktop-icon__img" src="" tabindex="0">
+            <span class="desktop-icon__text" tabindex="0"></span>
+        </div>
+    </template>
     <div class="desktop" >
 
         <div class="desktop__page" id="desktop">
-            <div class="desktop__icons">
-                <div class="desktop-icon" tabindex="0">
-                    <img class="desktop-icon__img" src="./static/icons/txt.png">
-                    <span class="desktop-icon__text">My Notepad.txt</span>
-                </div>
+            <div class="desktop__icons" id="iconContainer">
             </div>
             <div class="ui-layout">
             </div>

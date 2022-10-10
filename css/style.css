@@ -30,6 +30,9 @@ button:hover {
 .desktop__page {
   flex-grow: 1;
 }
+.desktop__icons {
+  display: flex;
+}
 
 .window-ui {
   background-color: #c3c3c3;
@@ -139,13 +142,11 @@ button:hover {
 }
 
 .desktop-icon {
-  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 80px;
   margin: 10px 4px 3px;
-  padding-top: 15px;
   gap: 4px;
   z-index: 0;
 }
@@ -163,6 +164,7 @@ button:hover {
 }
 .desktop-icon__img {
   width: 32px;
+  padding: 15px 24px 0px;
 }
 .desktop-icon__img--clicked {
   filter: invert(30%) sepia(52%) saturate(1931%) hue-rotate(201deg) brightness(60%) contrast(94%);
