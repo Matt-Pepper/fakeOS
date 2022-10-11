@@ -6,6 +6,13 @@ const windowUi = document.querySelectorAll(".window-ui");
 const desktop = document.querySelector("#desktop");
 const iconContainer = document.getElementById("iconContainer");
 
+
+const openApps = [];
+
+const appFactory = (window, tab) => {
+    openApps.push({ })
+}
+
 // {name: "", icon: "", app: ""}
 /**
  * create a new app by supplying an icon and creating an app function
@@ -68,10 +75,10 @@ const createIconClickHandler = (icon) => {
 	for (let i = 0; i < icon.length; i++) {
 		if (icon[i].hasChildNodes()) {
 			icon[i].querySelector("img").addEventListener("click", addIconColor);
-			icon[i].querySelector("img").addEventListener("dblclick", createWindow);
+			icon[i].querySelector("img").addEventListener("dblclick", createApp);
 			icon[i].querySelector("img").addEventListener("blur", removeIconColor);
 			icon[i].querySelector("span").addEventListener("click", addIconColor);
-			icon[i].querySelector("span").addEventListener("dblclick", createWindow);
+			icon[i].querySelector("span").addEventListener("dblclick", createApp);
 			icon[i].querySelector("span").addEventListener("blur", removeIconColor);
 		}
 	}
@@ -107,7 +114,27 @@ const createWindow = (e) => {
     console.log(windowClone);
     createTaskbarBtn(e);
 	createTitleBarEvents();
+    openApps.push({window: windowClone});
+    console.log(openApps);
 };
+
+const createApp = e => {
+    //  Creates window
+    const windowClone = windowTemplate.content.firstElementChild.cloneNode(true);
+	windowClone.querySelector(".titlebar__title").textContent = iconList[e.target.attributes.getNamedItem("data-icon-id").value].fileName;
+	desktop.appendChild(windowClone);
+    //  Creates tabs
+    const taskbarBtnClone = taskbtnTemplate.content.firstElementChild.cloneNode(true);
+    taskbarBtnClone.querySelector("img").setAttribute("src", iconList[e.target.attributes.getNamedItem("data-icon-id").value].app.icon);
+    taskbarBtnClone.querySelector("div").textContent = iconList[e.target.attributes.getNamedItem("data-icon-id").value].fileName;
+    taskbar.appendChild(taskbarBtnClone);
+
+    //  Event Listeners
+    windowClone.querySelector(".titlebar__maximizeButton").addEventListener("click", maximizeWindow, false);
+    windowClone.querySelector(".titlebar__closeButton").addEventListener("click", () => windowClone.remove());
+    windowClone.querySelector(".titlebar__closeButton").addEventListener("click", () => taskbarBtnClone.remove());
+
+}
 
 const createTaskbarBtn = (e) => {
 //const taskbtnTemplate = document.getElementById("taskButton");
@@ -116,7 +143,7 @@ const createTaskbarBtn = (e) => {
     taskbarBtnClone.querySelector("img").setAttribute("src", iconList[e.target.attributes.getNamedItem("data-icon-id").value].app.icon);
     taskbarBtnClone.querySelector("div").textContent = iconList[e.target.attributes.getNamedItem("data-icon-id").value].fileName;
     taskbar.appendChild(taskbarBtnClone);
-    console.log(taskbarBtnClone);
+
 }
 
 const createIcons = (iconList) => {

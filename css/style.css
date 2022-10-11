@@ -49,8 +49,21 @@ button:hover {
   left: 100px;
   z-index: 998;
 }
+.window-ui__content {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  align-items: center;
+}
 .window-ui--inactive {
   z-index: 990;
+}
+
+.notepad {
+  margin-top: 15px;
+  resize: none;
+  width: calc(100% - 20px);
+  height: 100%;
 }
 
 .taskbar {
@@ -224,7 +237,7 @@ button:hover {
   background-color: rgb(0, 0, 128);
 }
 
-button, .window-ui {
+button, .window-ui, .notepad {
   border-style: solid;
   border-width: 2px;
   border-top-color: #ffffff;

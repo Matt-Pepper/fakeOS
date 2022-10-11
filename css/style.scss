@@ -60,9 +60,25 @@ button {
 	//overflow: scroll;
 	//box-sizing: border-box;
 
+	&__content {
+		display: flex;
+		flex-direction: column;
+		height: 90%;
+		align-items: center;
+	}
 	&--inactive {
 		z-index: 990;
 	}
+}
+
+.notepad {
+	//box-sizing: border-box;
+	margin-top: 15px;
+	resize: none;
+	width: calc(100% - 20px);
+	height: 100%;
+	@extend %border-effect;
+	
 }
 
 .taskbar {

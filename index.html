@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,51 +11,73 @@
     <script src="./js/index.js" defer></script>
     <script src="./js/clock.js" defer></script>
 </head>
+
 <body>
     <template id="windowUi">
         <div class="window-ui">
             <div class="titlebar">
                 <span class="titlebar__title"></span>
                 <div class="titlebar__button-group">
-                    <button class="titlebar__minimizeButton titlebar__button"><i class="fa-solid fa-window-minimize"></i></button>
-                    <button class="titlebar__maximizeButton titlebar__button"><i class="fa-solid fa-window-maximize"></i></button>
+                    <button class="titlebar__minimizeButton titlebar__button"><i
+                            class="fa-solid fa-window-minimize"></i></button>
+                    <button class="titlebar__maximizeButton titlebar__button"><i
+                            class="fa-solid fa-window-maximize"></i></button>
                     <button class="titlebar__closeButton titlebar__button"><i class="fa-solid fa-xmark"></i></button>
                 </div>
-    
             </div>
             <div class="window-ui__content">
-               
             </div>
         </div>
     </template>
     <template id="iconTemplate">
-        <div class="desktop-icon" >
+        <div class="desktop-icon">
             <img class="desktop-icon__img" src="" tabindex="0" data-icon-id="">
             <span class="desktop-icon__text" tabindex="0" data-icon-id=""></span>
         </div>
     </template>
     <template id="taskButton">
-        <button class="taskbar__button"><img src=""><div></div></button>
+        <button class="taskbar__button"><img src="">
+            <div></div>
+        </button>
     </template>
 
-    <div class="desktop" >
+    <div class="desktop">
 
         <div class="desktop__page" id="desktop">
             <div class="desktop__icons" id="iconContainer">
             </div>
             <div class="ui-layout">
+               <!-- <div class="window-ui">
+                    <div class="titlebar">
+                        <span class="titlebar__title"></span>
+                        <div class="titlebar__button-group">
+                            <button class="titlebar__minimizeButton titlebar__button"><i
+                                    class="fa-solid fa-window-minimize"></i></button>
+                            <button class="titlebar__maximizeButton titlebar__button"><i
+                                    class="fa-solid fa-window-maximize"></i></button>
+                            <button class="titlebar__closeButton titlebar__button"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="window-ui__content">
+                        <div class="window-ui__menu">File</div>
+                        <textarea class="notepad" name="notepad"></textarea>
+                    </div> 
+               
+                </div> -->
             </div>
-
         </div>
-        
         <footer class="taskbar">
             <div class="taskbar__button-group" id="taskbarBtns">
-                <button class="taskbar__start"><img src="./static/icons/start.png"><div> Start</div></button>
-                
+                <button class="taskbar__start"><img src="./static/icons/start.png">
+                    <div> Start</div>
+                </button>
+
 
             </div>
             <div class="taskbar__clock"><span id="clockTime"></span> </div>
         </footer>
     </div>
 </body>
+
 </html>
