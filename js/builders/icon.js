@@ -4,6 +4,7 @@ const windowTemplate = document.getElementById("windowUi");
 const iconTemplate = document.getElementById("iconTemplate");
 const taskbtnTemplate = document.getElementById("taskButton");
 const iconContainer = document.getElementById("iconContainer");
+let quizCount = 0;
 
 // {name: "", icon: "", app: ""}
 /**
@@ -78,12 +79,15 @@ const createApp = (e) => {
 	const windowClone = windowTemplate.content.firstElementChild.cloneNode(true);
 	const taskbarBtnClone = taskbtnTemplate.content.firstElementChild.cloneNode(true);
     const appNum = e.target.attributes.getNamedItem("data-icon-id").value;
-
+	if (appNum == 2 && quizCount < 1){
 	winUI.createWindow(windowClone, e.target, appNum);
-
 
 	task.createTaskbarBtn(taskbarBtnClone, e.target);
 	winUI.windowEventHandlers(windowClone, taskbarBtnClone);
+	quizCount++;
+	} else {
+		alert("You can only open one quiz, please refresh to try again.");
+	}
 };
 
 const addIconColor = (e) => {

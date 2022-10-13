@@ -13,9 +13,9 @@ export const createWindow = (windowClone, e, appNum) => {
 	windowClone.querySelector(".titlebar__title").textContent =
 		icons.iconList[e.attributes.getNamedItem("data-icon-id").value].fileName;
 
-	addApp(content, appType);
-
-	desktop.appendChild(windowClone);
+        
+        desktop.appendChild(windowClone);
+        addApp(content, appType);
 	getAppPosition(windowClone);
 };
 

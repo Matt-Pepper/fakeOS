@@ -4,11 +4,16 @@ const score = [0, 0];
 const buttonFunctions = [];
 
 export const createQuiz = (parent) => {
+    if (document.querySelectorAll(".quiz").length < 1)
+    {
 	const quizClone = quizTemplate.content.firstElementChild.cloneNode(true);
 	parent.closest(".window-ui").style.height = "800px";
 	parent.closest(".window-ui").style.width = "600px";
 	fetchQuestions(quizClone);
 	appendQuiz(parent, quizClone);
+    } else {
+        parent.closest(".window-ui").remove();
+    }
 };
 
 const appendQuiz = (parent, quiz) => {
@@ -71,13 +76,13 @@ const applyFunctionsToBtns = (question, clone) => {
 const getAnswer = (question, element, clone) => {
 	const correctPara = clone.querySelector(".quiz__correct");
 	if (element.innerHTML === question.correct) {
-		correctPara.innerHTML = `${question.correct} was the correct answer!`;
+		correctPara.innerHTML = `"${question.correct}" <br/> was the correct answer!`;
 		correctPara.classList.add("quiz__correct--correct");
 		correctPara.classList.remove("quiz__correct--wrong");
 		score[0]++;
 		score[1]++;
 	} else {
-		correctPara.innerHTML = `The correct answer was: ${question.correct}`;
+		correctPara.innerHTML = `The correct answer was:<br/> "${question.correct}"`;
 		correctPara.classList.add("quiz__correct--wrong");
 		correctPara.classList.remove("quiz__correct--correct");
 		score[1]++;
