@@ -33,7 +33,7 @@
     </template>
     <template id="iconTemplate">
         <div class="desktop-icon">
-            <img class="desktop-icon__img" src="" tabindex="0" data-icon-id="">
+            <img class="desktop-icon__img" src="" tabindex="0" data-icon-id="" draggable="false">
             <span class="desktop-icon__text" tabindex="0" data-icon-id=""></span>
         </div>
     </template>
@@ -57,46 +57,53 @@
             <p class="quiz__score"></p>
         </div>
     </template>
+    <template id="startMenuTemplate">
+        <div class="start-menu start-menu--hidden">
+            <div class="start-menu__title">Windows 95</div>
+            <div class="start-menu__buttons"></div>
+        </div>
+    </template>
+    <template id="startItemTemplate">
+        <div class="start-menu__button">
+            <img src="" class="start-menu__img" draggable="false">
+            <span class="start-menu__text"></span>
+        </div>
+    </template>
     <!--
     <i class="fa-solid fa-floppy-disk"></i>
     <i class="fa-solid fa-trash"></i>
 -->
-    <div class="desktop">
+<!-- <div class="window-ui">
+    <div class="titlebar">
+        <span class="titlebar__title"></span>
+        <div class="titlebar__button-group">
+            <button class="titlebar__minimizeButton titlebar__button"><i
+                    class="fa-solid fa-window-minimize"></i></button>
+            <button class="titlebar__maximizeButton titlebar__button"><i
+                    class="fa-solid fa-window-maximize"></i></button>
+            <button class="titlebar__closeButton titlebar__button"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+    
+    <div class="window-ui__content">
+        <div class="window-ui__menu">File</div>
+        <textarea class="notepad" name="notepad"></textarea>
+    </div> 
 
+</div> -->
+    <div class="desktop">
+        <div id="startMenu"></div>
         <div class="desktop__page" id="desktop">
-            <div class="desktop__icons" id="iconContainer">
-            </div>
-            <div class="ui-layout">
-                <!-- <div class="window-ui">
-                    <div class="titlebar">
-                        <span class="titlebar__title"></span>
-                        <div class="titlebar__button-group">
-                            <button class="titlebar__minimizeButton titlebar__button"><i
-                                    class="fa-solid fa-window-minimize"></i></button>
-                            <button class="titlebar__maximizeButton titlebar__button"><i
-                                    class="fa-solid fa-window-maximize"></i></button>
-                            <button class="titlebar__closeButton titlebar__button"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                    </div>
-                    
-                    <div class="window-ui__content">
-                        <div class="window-ui__menu">File</div>
-                        <textarea class="notepad" name="notepad"></textarea>
-                    </div> 
-               
-                </div> -->
-                
-            </div>
+            <div class="desktop__icons" id="iconContainer"></div>
+            <div class="ui-layout"></div>
         </div>
         <footer class="taskbar">
             <div class="taskbar__button-group" id="taskbarBtns">
-                <button class="taskbar__start"><img src="./static/icons/start.png">
+                <button class="taskbar__start" id="taskbarStart"><img src="./static/icons/start.png" draggable="false">
                     <div> Start</div>
                 </button>
-
-
             </div>
-            <div class="taskbar__clock"><span id="clockTime"></span> </div>
+            <div class="taskbar__clock"><span id="clockTime"></span></div>
         </footer>
     </div>
 </body>

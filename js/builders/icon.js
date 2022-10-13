@@ -91,7 +91,6 @@ const createApp = (e) => {
 };
 
 const addIconColor = (e) => {
-	//console.log(e.target);
 	e.target.parentNode
 		.querySelector(".desktop-icon__text")
 		.classList.toggle("desktop-icon--clicked");
@@ -100,7 +99,6 @@ const addIconColor = (e) => {
 		.classList.toggle("desktop-icon__img--clicked");
 };
 const removeIconColor = (e) => {
-	//console.log(e.target);
 	e.target.parentNode
 		.querySelector(".desktop-icon__text")
 		.classList.remove("desktop-icon--clicked");

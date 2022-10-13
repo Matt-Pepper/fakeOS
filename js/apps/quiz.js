@@ -22,10 +22,10 @@ const appendQuiz = (parent, quiz) => {
 
 const fetchQuestions = async (clone) => {
 	try {
-		const response = await fetch(
+		let response = await fetch(
 			"https://opentdb.com/api.php?amount=20&category=9&type=multiple"
 		);
-		const data = await response.json();
+		let data = await response.json();
 		fillQuiz(data);
 	} catch (e) {
 		console.log(e);
@@ -91,7 +91,7 @@ const getAnswer = (question, element, clone) => {
 	if (questions.length) {
 		nextQuestion(clone);
 	} else {
-		fetchQuestions();
+		fetchQuestions(clone);
 	}
 };
 

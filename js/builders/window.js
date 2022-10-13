@@ -20,7 +20,6 @@ export const createWindow = (windowClone, e, appNum) => {
 };
 
 export const addApp = (parent, app) => {
-	console.log({ parent, app });
 	switch (app) {
 		case "quiz":
 			quiz.createQuiz(parent);
