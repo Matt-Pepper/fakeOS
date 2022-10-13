@@ -1,19 +1,16 @@
 const quizTemplate = document.getElementById("quizTemplate");
 const questions = [];
 const score = [0, 0];
-const buttonFunctions = [];
+
 
 export const createQuiz = (parent) => {
-    if (document.querySelectorAll(".quiz").length < 1)
-    {
+
 	const quizClone = quizTemplate.content.firstElementChild.cloneNode(true);
 	parent.closest(".window-ui").style.height = "800px";
 	parent.closest(".window-ui").style.width = "600px";
 	fetchQuestions(quizClone);
 	appendQuiz(parent, quizClone);
-    } else {
-        parent.closest(".window-ui").remove();
-    }
+    
 };
 
 const appendQuiz = (parent, quiz) => {
@@ -22,11 +19,13 @@ const appendQuiz = (parent, quiz) => {
 
 const fetchQuestions = async (clone) => {
 	try {
+		if (questions){
 		let response = await fetch(
 			"https://opentdb.com/api.php?amount=20&category=9&type=multiple"
 		);
 		let data = await response.json();
 		fillQuiz(data);
+		}
 	} catch (e) {
 		console.log(e);
 	} finally {
@@ -66,14 +65,15 @@ const nextQuestion = (clone) => {
 };
 
 const applyFunctionsToBtns = (question, clone) => {
+	const buttonFunctions = [];
 	const buttons = clone.querySelectorAll(".quiz__answer");
 	for (let i = 0; i < buttons.length; i++) {
-		buttonFunctions.push(() => getAnswer(question, buttons[i], clone));
+		buttonFunctions.push(() => getAnswer(question, buttons[i], clone, buttonFunctions));
 		buttons[i].addEventListener("click", buttonFunctions[i]);
 	}
 };
 
-const getAnswer = (question, element, clone) => {
+const getAnswer = (question, element, clone, func) => {
 	const correctPara = clone.querySelector(".quiz__correct");
 	if (element.innerHTML === question.correct) {
 		correctPara.innerHTML = `"${question.correct}" <br/> was the correct answer!`;
@@ -87,7 +87,7 @@ const getAnswer = (question, element, clone) => {
 		correctPara.classList.remove("quiz__correct--correct");
 		score[1]++;
 	}
-	removeFunctions(clone);
+	removeFunctions(clone, func);
 	if (questions.length) {
 		nextQuestion(clone);
 	} else {
@@ -95,11 +95,11 @@ const getAnswer = (question, element, clone) => {
 	}
 };
 
-const removeFunctions = (clone) => {
+const removeFunctions = (clone, func) => {
 	const buttons = clone.querySelectorAll(".quiz__answer");
-	while (buttonFunctions.length > 0) {
+	while (func.length > 0) {
 		for (const button of buttons) {
-			button.removeEventListener("click", buttonFunctions.shift());
+			button.removeEventListener("click", func.shift());
 		}
 	}
 };

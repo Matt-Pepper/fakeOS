@@ -21,18 +21,19 @@ export const createStart = () => {
 		const menuItem = menuTemplate.content.firstElementChild.cloneNode(true);
 		menuItem.querySelector(".start-menu__img").setAttribute("src", element.img);
 		menuItem.querySelector(".start-menu__text").textContent = element.name;
-        startMenu.querySelector(".start-menu__buttons").appendChild(menuItem)
+		startMenu.querySelector(".start-menu__buttons").appendChild(menuItem);
 	}
-    document.querySelector(".desktop").addEventListener("click", removeStart);
+	document.querySelector(".desktop").addEventListener("click", removeStart);
 };
 
 export const toggleStart = () => {
-    document.querySelector(".start-menu").classList.toggle("start-menu--hidden");
+	document.querySelector(".start-menu").classList.toggle("start-menu--hidden");
 };
 
 export const removeStart = (e) => {
-    const startMenu = document.querySelector(".start-menu");
-    //console.log(startMenu)
-    if(!startMenu.contains(e.target) && !startButton.contains(e.target))
-    document.querySelector(".start-menu").classList.add("start-menu--hidden");
+	const startMenu = document.querySelector(".start-menu");
+
+	if (!startMenu.contains(e.target) && !startButton.contains(e.target)) {
+		document.querySelector(".start-menu").classList.add("start-menu--hidden");
+	}
 };
