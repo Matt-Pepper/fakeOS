@@ -9,18 +9,19 @@ let appRound = 1;
 
 export const createWindow = (windowClone, e, appNum) => {
 	const content = windowClone.querySelector(".window-ui__content");
-    const appType = icons.iconList[appNum].app.app;
 	windowClone.querySelector(".titlebar__title").textContent =
-		icons.iconList[e.attributes.getNamedItem("data-icon-id").value].fileName;
+	icons.iconList[e.attributes.getNamedItem("data-icon-id").value].fileName;
+    const appType = icons.iconList[appNum].app.app;
 
-        
+
         desktop.appendChild(windowClone);
-        addApp(content, appType);
+
+        addApp(content, appType, icons.iconList[appNum]);
 	getAppPosition(windowClone);
 };
 
-export const addApp = (parent, app) => {
-	switch (app) {
+export const addApp = (parent, appNum, app) => {
+	switch (appNum) {
 		case "quiz":
 			quiz.createQuiz(parent);
 			break;
@@ -28,7 +29,7 @@ export const addApp = (parent, app) => {
 			pictures.createPics(parent);
 			break;
 		case "notepad":
-			notepad.createNotepad(parent);
+			notepad.createNotepad(parent, app);
 			break;
 		default:
 			break;

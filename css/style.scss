@@ -55,33 +55,55 @@ button {
 	height: 400px;
 	font-size: 20px;
 	text-align: center;
-	//top: 200px;
-	//left: 200px;
 	@extend %border-effect;
 	z-index: 997;
-	//flex-grow: 1;
-	//resize: both;
-	//overflow: scroll;
-	//box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+
 
 	&__content {
 		display: flex;
 		flex-direction: column;
-		height: 90%;
+		box-sizing: border-box;
 		align-items: center;
+		flex-grow: 1;
+		padding: 10px;
 	}
 	&--inactive {
 		z-index: 990;
 	}
 }
 
+
 .notepad {
 	//box-sizing: border-box;
-	margin-top: 15px;
-	resize: none;
-	width: calc(100% - 20px);
+	width: 100%;
 	height: 100%;
 	@extend %border-effect;
+	//padding: 5px;
+	display: flex;
+	flex-direction: column;
+	padding: 5px;
+	&__filename {
+		padding-left: 10px;
+	}
+	&__text {
+		margin-top: 5px;
+		resize: none;
+		width: 100%;
+		flex-grow: 1;
+		padding: 5px;
+		box-sizing: border-box;
+	}
+	&__menu {
+		display: flex;
+		justify-content: space-around;
+		gap: 5px;
+	}
+	&__button {
+		flex-grow: 1;
+		height: 30px;
+	}
 }
 
 .taskbar {

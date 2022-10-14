@@ -31,18 +31,27 @@ export const iconList = [
  * @param {array} content
  */
 export const iconFactory = (app, fileName, content) => {
-	iconList.push({ id: iconList.length, app: appType[app], fileName: fileName, content: content });
+	const newIcon = { id: iconList.length, app: appType[app], fileName: fileName, content: content };
+	iconList.push(newIcon);
+	createIcon(newIcon)
 };
-//iconFactory(1, "a", []);
+//iconFactory(0, "Test", ["test"]);
 
 export const createIcons = (iconList) => {
-	for (const element of iconList) {
-		const iconClone = iconTemplate.content.firstElementChild.cloneNode(true);
-		fillIcon(iconClone, element);
-		iconContainer.appendChild(iconClone);
+	console.log(document.getElementsByClassName("desktop-icon"));
+	if (!document.getElementsByClassName("desktop-icon").length) {
+		for (const element of iconList) {
+			createIcon(element);
+		}
 	}
-	const icon = document.querySelectorAll(".desktop-icon");
-	createIconClickHandler(icon);
+};
+
+const createIcon = (element) => {
+	const iconClone = iconTemplate.content.firstElementChild.cloneNode(true);
+	fillIcon(iconClone, element);
+	iconContainer.appendChild(iconClone);
+
+	createIconClickHandler(iconClone);
 };
 
 const fillIcon = (icon, el) => {
@@ -59,16 +68,12 @@ const fillIcon = (icon, el) => {
  * @param {*} icon
  */
 const createIconClickHandler = (icon) => {
-	for (let i = 0; i < icon.length; i++) {
-		if (icon[i].hasChildNodes()) {
-			icon[i].querySelector("img").addEventListener("click", addIconColor);
-			icon[i].querySelector("img").addEventListener("dblclick", createApp);
-			icon[i].querySelector("img").addEventListener("blur", removeIconColor);
-			icon[i].querySelector("span").addEventListener("click", addIconColor);
-			icon[i].querySelector("span").addEventListener("dblclick", createApp);
-			icon[i].querySelector("span").addEventListener("blur", removeIconColor);
-		}
-	}
+	icon.querySelector("img").addEventListener("click", addIconColor);
+	icon.querySelector("img").addEventListener("dblclick", createApp);
+	icon.querySelector("img").addEventListener("blur", removeIconColor);
+	icon.querySelector("span").addEventListener("click", addIconColor);
+	icon.querySelector("span").addEventListener("dblclick", createApp);
+	icon.querySelector("span").addEventListener("blur", removeIconColor);
 };
 
 /**
@@ -78,15 +83,13 @@ const createIconClickHandler = (icon) => {
 const createApp = (e) => {
 	const windowClone = windowTemplate.content.firstElementChild.cloneNode(true);
 	const taskbarBtnClone = taskbtnTemplate.content.firstElementChild.cloneNode(true);
-    const appNum = e.target.attributes.getNamedItem("data-icon-id").value;
-
+	const appNum = e.target.attributes.getNamedItem("data-icon-id").value;
 
 	winUI.createWindow(windowClone, e.target, appNum);
 
 	task.createTaskbarBtn(taskbarBtnClone, e.target);
 	winUI.windowEventHandlers(windowClone, taskbarBtnClone);
-
-}
+};
 
 const addIconColor = (e) => {
 	e.target.parentNode

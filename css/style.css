@@ -50,22 +50,47 @@ button:hover {
   font-size: 20px;
   text-align: center;
   z-index: 997;
+  display: flex;
+  flex-direction: column;
 }
 .window-ui__content {
   display: flex;
   flex-direction: column;
-  height: 90%;
+  box-sizing: border-box;
   align-items: center;
+  flex-grow: 1;
+  padding: 10px;
 }
 .window-ui--inactive {
   z-index: 990;
 }
 
 .notepad {
-  margin-top: 15px;
-  resize: none;
-  width: calc(100% - 20px);
+  width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+.notepad__filename {
+  padding-left: 10px;
+}
+.notepad__text {
+  margin-top: 5px;
+  resize: none;
+  width: 100%;
+  flex-grow: 1;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.notepad__menu {
+  display: flex;
+  justify-content: space-around;
+  gap: 5px;
+}
+.notepad__button {
+  flex-grow: 1;
+  height: 30px;
 }
 
 .taskbar {
