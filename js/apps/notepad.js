@@ -5,11 +5,12 @@ const notepadTemplate = document.getElementById("notepadTemplate");
 export const createNotepad = (parent, app) => {
 	const notepadClone = notepadTemplate.content.firstElementChild.cloneNode(true);
 	notepadClone.querySelector(".notepad__save").addEventListener("click", () => {
-        
-        
         saveNotepad(app, notepadClone)
     });
-	//console.log(app);
+	notepadClone.querySelector(".notepad__delete").addEventListener("click", () => {
+        deleteNotepad(app)
+    });
+
 	if (app.content) {
 		notepadClone.querySelector(".notepad__text").textContent = app.content;
 	}
@@ -19,7 +20,6 @@ export const createNotepad = (parent, app) => {
 const saveNotepad = (file, clone) => {
     const content = clone.querySelector(".notepad__text")
     const fileName = clone.querySelector(".notepad__filename")
-    console.log(file)
     if(file.id === 0) {
     icons.iconFactory(0, fileName.value, [content.value]);
     } else {
@@ -29,8 +29,11 @@ const saveNotepad = (file, clone) => {
         fileName.textContent = fileName.value;
         
     }
-    //console.log(icons.iconList)
-
 };
 
-const deleteNotepad = (file) => {};
+const deleteNotepad = (file) => {
+    if(file.id === 0){
+        return;
+    }
+    document.querySelector(`[data-id="${file.id}"]`).remove();
+};

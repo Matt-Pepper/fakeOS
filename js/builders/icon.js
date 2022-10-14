@@ -38,7 +38,6 @@ export const iconFactory = (app, fileName, content) => {
 //iconFactory(0, "Test", ["test"]);
 
 export const createIcons = (iconList) => {
-	console.log(document.getElementsByClassName("desktop-icon"));
 	if (!document.getElementsByClassName("desktop-icon").length) {
 		for (const element of iconList) {
 			createIcon(element);
@@ -57,6 +56,7 @@ const createIcon = (element) => {
 const fillIcon = (icon, el) => {
 	const iconImg = icon.querySelector(".desktop-icon__img");
 	const iconTxt = icon.querySelector(".desktop-icon__text");
+	icon.setAttribute("data-id", el.id)
 	iconImg.setAttribute("src", el.app.icon);
 	iconTxt.textContent = el.fileName;
 	iconImg.setAttribute("data-icon-id", el.id);
