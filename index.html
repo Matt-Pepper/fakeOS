@@ -60,10 +60,25 @@
         <div class="notepad">
             <div class="notepad__menu">
                 <button class="notepad__button notepad__save"><i class="fa-solid fa-floppy-disk"></i> Save</button>
-                <input class="notepad__filename" type="text">
+                <input class="notepad__filename" type="text" placeholder="Enter file Name">
                 <button class="notepad__button notepad__delete"><i class="fa-solid fa-trash"></i> Delete</button>
             </div>
             <textarea class="notepad__text"></textarea>
+        </div>
+    </template>
+    <template id="rpsTemplate">
+        <div class="game">
+            <div class="game__opponent">
+                <i class="game__opponent-move fa-solid fa-hands"></i>
+            </div>
+            <div class="game__stats">
+
+            </div>
+            <div class="game__player">
+                <button class="game__button" value="scissors"><i class="fa-regular fa-hand-peace"></i></button>
+                <button class="game__button" value="paper"><i class="fa-regular fa-hand"></i></button>
+                <button class="game__button" value="rock"><i class="fa-regular fa-hand-back-fist"></i></button>
+            </div>
         </div>
     </template>
     <template id="startMenuTemplate">
@@ -87,6 +102,7 @@
         <div id="startMenu"></div>
         <div class="desktop__page" id="desktop">
             <div class="desktop__icons" id="iconContainer"></div>
+            
         </div>
         <footer class="taskbar">
             <div class="taskbar__button-group" id="taskbarBtns">

@@ -1,7 +1,7 @@
 import * as icons from "./icon.js";
 import * as quiz from "../apps/quiz.js";
 import * as notepad from "../apps/notepad.js";
-import * as pictures from "../apps/pictures.js";
+import * as rps from "../apps/game.js";
 
 let appRows = 0;
 let appCounter = 1;
@@ -25,8 +25,8 @@ export const addApp = (parent, appNum, app) => {
 		case "quiz":
 			quiz.createQuiz(parent);
 			break;
-		case "pictures":
-			pictures.createPics(parent);
+		case "rps":
+			rps.createGame(parent);
 			break;
 		case "notepad":
 			notepad.createNotepad(parent, app);

@@ -1,0 +1,52 @@
+@use "../partials/_partials";
+
+//@extend %border-effect;
+
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 5px;
+    width: 100%;
+    flex-grow: 1;
+    &__opponent {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &--win {
+            color: greenyellow;
+        }
+        &--lose {
+            color: red;
+
+        }
+
+        &-move {
+            font-size: 80pt;
+            &--hidden {
+                color: #c3c3c3;
+            }
+        }
+    }
+    &__stats {
+        background-color: black;
+        color: white;
+
+    }
+    &__player {
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-evenly;
+        gap: 10px;
+    }
+    &__button {
+        flex-grow: 1;
+        font-size: 80pt;
+
+        & > * {
+            pointer-events: none;
+        }
+    }
+}

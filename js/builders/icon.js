@@ -12,13 +12,13 @@ let quizCount = 0;
  */
 export const appType = [
 	{ icon: "./static/icons/txt.png", app: "notepad" },
-	{ icon: "./static/icons/folder.png", app: "pictures" },
+	{ icon: "./static/icons/computer.png", app: "rps" },
 	{ icon: "./static/icons/globe.png", app: "quiz" },
 ];
 
 export const iconList = [
 	{ id: 0, app: appType[0], fileName: "Notepad", content: [] },
-	{ id: 1, app: appType[1], fileName: "My Pictures", content: [] },
+	{ id: 1, app: appType[1], fileName: "RPS", content: [] },
 	{ id: 2, app: appType[2], fileName: "Quiz Game", content: [] },
 ];
 

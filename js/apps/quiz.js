@@ -6,8 +6,6 @@ const score = [0, 0];
 export const createQuiz = (parent) => {
 
 	const quizClone = quizTemplate.content.firstElementChild.cloneNode(true);
-	parent.closest(".window-ui").style.height = "800px";
-	parent.closest(".window-ui").style.width = "600px";
 	fetchQuestions(quizClone);
 	appendQuiz(parent, quizClone);
     
