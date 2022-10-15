@@ -48,13 +48,13 @@ const gameResult = (result, e) => {
 	const lose = "game__opponent--lose";
 	switch (result) {
 		case "win":
-			opponent.classList.add(win);
 			opponent.classList.remove(lose);
+			opponent.classList.add(win);
             
 			break;
 		case "lose":
-			opponent.classList.add(lose);
 			opponent.classList.remove(win);
+			opponent.classList.add(lose);
             
 			break;
 		case "draw":

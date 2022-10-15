@@ -21,6 +21,7 @@ button, .start-menu, .window-ui, .quiz, .quiz__question, .notepad {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: color 0.3s;
 }
 .game__opponent--win {
   color: greenyellow;
