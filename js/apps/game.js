@@ -111,6 +111,5 @@ const getOpponentMove = () => {
                         break;
                     }
                 }
-                console.log(moves)
 	return Object.keys(moves).reduce((a, b) => (moves[a] > moves[b] ? a : b));
 };
