@@ -98,18 +98,19 @@ const randomInt = () => {
 };
 const getOpponentMove = () => {
 	const moves = { scissors: 0, paper: 0, rock: 0 };
-	for (let i = 0; i < 19999; i++) {
-		switch (randomInt()) {
-			case 0:
-				moves.scissors++;
+	for (let i = 0; i < 20000; i++) {
+        switch (randomInt()) {
+            case 0:
+                moves.scissors++;
 				break;
-			case 1:
-				moves.paper++;
-				break;
-			case 2:
-				moves.rock++;
-				break;
-		}
-	}
+                case 1:
+                    moves.paper++;
+                    break;
+                    case 2:
+                        moves.rock++;
+                        break;
+                    }
+                }
+                console.log(moves)
 	return Object.keys(moves).reduce((a, b) => (moves[a] > moves[b] ? a : b));
 };
