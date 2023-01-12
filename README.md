@@ -1,5 +1,5 @@
 # fakeOS
-This is a website I built to look like the Windows 95 opperating system,
+This is a website I built to look like the Windows 95 operating system,
 I chose this OS because it was the first OS I ever used.
 
 ![image of website](static/images/screenshot.PNG)
